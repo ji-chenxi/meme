@@ -8,6 +8,11 @@
     <style>
       table {
         margin: 0 auto;
+        border-collapse: collapse;
+        border-right: 1px solid #000000;
+        border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+        text-align: center;
       }
       table,
       th,
@@ -16,6 +21,36 @@
         border-collapse: collapse; /* 消除双边框效果 */
         text-align: center;
         padding: 3px;
+      }
+      .table th {
+        border-left: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+      }
+
+      .table td {
+        border-left: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+      }
+
+      .table tbody {
+        display: block;
+        height: 100px;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+      }
+      .table thead,
+      tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      .table tbody::-webkit-scrollbar {
+        display: none;
+      }
+
+      .table thead th {
+        background: #ccc;
       }
     </style>
   </head>
@@ -416,7 +451,7 @@
             </td>
           </tr>
           <tr>
-            <td style="color: blue;">5.11</td>
+            <td style="color: blue">5.11</td>
             <td>
               1.2
               <span style="color: rgb(34, 255, 52)">↓</span>
@@ -435,7 +470,7 @@
             </td>
           </tr>
           <tr>
-            <td style="color: blue;">5.12</td>
+            <td style="color: blue">5.12</td>
             <td>
               1.3
               <span style="color: rgb(34, 255, 52)">↓</span>
@@ -454,7 +489,7 @@
             </td>
           </tr>
           <tr>
-            <td style="color: blue;">5.13</td>
+            <td style="color: blue">5.13</td>
             <td>
               1.1
               <span style="color: rgb(34, 255, 52)">↓</span>
@@ -473,7 +508,7 @@
             </td>
           </tr>
           <tr>
-            <td style="color: blue;">5.14</td>
+            <td style="color: blue">5.14</td>
             <td>
               0.9
               <span style="color: rgb(34, 255, 52)">↓</span>
@@ -491,41 +526,41 @@
               <span style="color: rgb(34, 255, 52)">↓</span>
             </td>
           </tr>
-         <tr>
-            <td style="color: blue;">5.15</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-           <!-- <tr>
-            <td style="color: blue;"></td>
+          <tr>
+            <td style="color: blue">5.15</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
-            <td style="color: blue;"></td>
+            <td style="color: blue">5.16</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
-            <td style="color: blue;"></td>
+            <td style="color: blue">5.17</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
-            <td style="color: blue;"></td>
+            <td style="color: blue">5.18</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-          </tr> -->
+          </tr>
+          <tr>
+            <td style="color: blue">5.19</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
     </div>
