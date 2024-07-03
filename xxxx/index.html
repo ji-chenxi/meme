@@ -1,1237 +1,1269 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>血项</title>
-    <style>
-      table {
-        margin: 0 auto;
-        border-collapse: collapse;
-        text-align: center;
-      }
-      table,
-      th,
-      td {
-        border: 1px solid black;
-        border-collapse: collapse; /* 消除双边框效果 */
-        text-align: center;
-        padding: 3px;
-      }
-      thead th {
-        background-color: #f9f9f9;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-      }
-      tbody tr:nth-child(even) {
-        background-color: #f2f2f2;
-      }
-      .table tbody::-webkit-scrollbar {
-        display: none;
-      }
 
-      .table thead th {
-        background: #ccc;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root">
-      <table border="1">
-        <thead>
-          <tr>
-            <th>血项</th>
-            <th>
-              白细胞
-              <div style="color: red">(3.5-9.5)</div>
-            </th>
-            <th>
-              中性粒细胞绝对数
-              <div style="color: red">(1.8-6.3)</div>
-            </th>
-            <th>
-              血红蛋白含量
-              <div style="color: red">(135-175)</div>
-            </th>
-            <th>
-              血小板
-              <div style="color: red">(125-350)</div>
-            </th>
-            <th>
-              C-反应蛋白
-              <div style="color: red">(0-10)</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="color: blue">2024.4.22 （急诊）</td>
-            <td>
-              389.78
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              36.85
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              92
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              65
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">4.23</td>
-            <td>
-              350.99
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              33.65
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              88
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              56
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">4.24</td>
-            <td>
-              343.44
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              33.66
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              84
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              58
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">4.25（AM）</td>
-            <td>
-              355.48
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              32.8
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              85
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              55
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">4.25（PM）</td>
-            <td>
-              372.45
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              25.58
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              85
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              57
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">4.26</td>
-            <td>
-              352.4
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              30.78
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              82
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              54
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">4.27（住院）</td>
-            <td>
-              297.7
-              <span style="color: red">↑</span>
-            </td>
-            <td>3.7</td>
-            <td>
-              70
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              49
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">4.28</td>
-            <td>
-              221.2
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              1.5
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              78
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              45
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">4.29</td>
-            <td>
-              214
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              1.4
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              75
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              15
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">4.30</td>
-            <td>
-              188.3
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.9
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              73
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              68
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.1</td>
-            <td>
-              158.1
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              1.4
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              72
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              54
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.2</td>
-            <td>
-              146.2
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.8
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              77
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              49
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.3</td>
-            <td>
-              128.42
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              11.02
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              78
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              41
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.4</td>
-            <td>
-              89.4
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.2
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              72
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              30
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.5（化疗）</td>
-            <td>
-              66.4
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.2
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              74
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              17
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.6</td>
-            <td>
-              46.5
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.5
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              74
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              11
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.7</td>
-            <td>
-              20.1
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.1
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              69
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              29
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.8</td>
-            <td>8.1</td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              66
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              17
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.9</td>
-            <td>3.8</td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              59
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              35
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.10</td>
-            <td>
-              2.2
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              58
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              26
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.11（化疗药结束）</td>
-            <td>
-              1.2
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              54
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              15
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.12</td>
-            <td>
-              1.3
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              50
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              26
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.13（开始发烧）</td>
-            <td>
-              1.1
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              51
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              20
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.14</td>
-            <td>
-              0.9
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              46
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              12
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              19.9
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.15</td>
-            <td>
-              0.6
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              42
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              5
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              37.7
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.16</td>
-            <td>
-              0.6
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              43
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              14
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              59.9
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.17</td>
-            <td>
-              0.7
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              39
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              9
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              54.9
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.18</td>
-            <td>
-              0.9
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              48
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              23
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              63.9
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.19</td>
-            <td>
-              1.1
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.4
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              43
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              11
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              93
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.20</td>
-            <td>
-              0.9
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              46
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              6
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              133.6
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.21</td>
-            <td>
-              0.6
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.1
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              45
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              8
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              148.3
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.22</td>
-            <td>
-              0.5
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              53
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              4
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              242.6
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.23</td>
-            <td>
-              0.6
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              47
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              6
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              196.6
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.24</td>
-            <td>
-              0.9
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              56
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              8
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              155.3
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.25</td>
-            <td>
-              0.9
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              64
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              15
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              101.5
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.26</td>
-            <td>
-              0.9
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.1
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              69
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              22
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              71.1
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">5.27（一疗最后一天）</td>
-            <td>
-              1.0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.1
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              68
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              37
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              49.1
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>血项</title>
+  <style>
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      text-align: center;
+    }
 
-          <!-- 在家观察 -->
-          <tr>
-            <td style="color: blue">5.29（在家观察）</td>
-            <td>
-              2.1
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.49
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              69
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              114
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.1（在家观察）</td>
-            <td>
-              5.17
-            </td>
-            <td>
-              2.56
-            </td>
-            <td>
-              73
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              276
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.5（在家观察）</td>
-            <td>
-              5.58
-            </td>
-            <td>
-              3.39
-            </td>
-            <td>
-              83
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              444
-              <span style="color: red">↑</span>
-            </td>
-            <td></td>
-          </tr>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      /* 消除双边框效果 */
+      text-align: center;
+      padding: 3px;
+    }
 
-          <!-- 二疗开始 -->
-          <tr>
-            <td style="color: blue">6.8(二疗开始)</td>
-            <td>
-              5.35
-            </td>
-            <td>
-              3.08
-            </td>
-            <td>
-              97
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              471
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              < 0.5
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.9</td>
-            <td>
-              31.2
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              28.5
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              92
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              473
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.7
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.10</td>
-            <td>
-              23.7
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              22.3
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              99
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              484
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.5
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.11</td>
-            <td>
-              30.9
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              30.2
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              90
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              398
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.4
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.12</td>
-            <td>
-              16.5
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              16.1
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              87
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              368
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              0.4
-            </td>
-          </tr>
+    thead th {
+      background-color: #f9f9f9;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-        
-          <tr>
-            <td style="color: blue">6.17(在家测的)</td>
-            <td>
-              0.74
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.11
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              86
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              105
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <!-- 养疗开始 -->
-          <tr>
-            <td style="color: blue">6.18(养疗开始)</td>
-            <td>
-              0.6
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              73
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              57
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.8
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.19</td>
-            <td>
-              0.5
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              77
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              41
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              1
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.20</td>
-            <td>
-              0.4
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              70
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              18
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              4.8
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.21</td>
-            <td>
-              0.3
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              71
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              8
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              25.1
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.22</td>
-            <td>
-              0.5
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              64
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              4
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              53.2
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.23</td>
-            <td>
-              0.7
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              64
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              23
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              47.1
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="color: blue">6.24</td>
-            <td>
-              1.9
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              0.3
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              65
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              31
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              83.6
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <div>打了四针升白针</div>
-          <tr>
-            <td>6.25</td>
-            <td>
-              10.4
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              6.2
-            </td>
-            <td>
-              61
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              56
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              82.8
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td>6.26</td>
-            <td>
-              18.3
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              13.8
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              58
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              100
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              78.1
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-          <tr>
-            <td>6.27</td>
-            <td>
-              19.8
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              15.5
-              <span style="color: red">↑</span>
-            </td>
-            <td>
-              61
-              <span style="color: rgb(34, 255, 52)">↓</span>
-            </td>
-            <td>
-              162
-            </td>
-            <td>
-              42.8
-              <span style="color: red">↑</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="color: rgb(255, 34, 130); font-size: 18px; font-weight: bold;">加油！☺☺☺☺☺</div>
-    </div>
-  </body>
+    tbody tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .table tbody::-webkit-scrollbar {
+      display: none;
+    }
+
+    .table thead th {
+      background: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>血项</th>
+          <th>
+            白细胞
+            <div style="color: red">(3.5-9.5)</div>
+          </th>
+          <th>
+            中性粒细胞绝对数
+            <div style="color: red">(1.8-6.3)</div>
+          </th>
+          <th>
+            血红蛋白含量
+            <div style="color: red">(135-175)</div>
+          </th>
+          <th>
+            血小板
+            <div style="color: red">(125-350)</div>
+          </th>
+          <th>
+            C-反应蛋白
+            <div style="color: red">(0-10)</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color: blue">2024.4.22 （急诊）</td>
+          <td>
+            389.78
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            36.85
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            92
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            65
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">4.23</td>
+          <td>
+            350.99
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            33.65
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            88
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            56
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">4.24</td>
+          <td>
+            343.44
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            33.66
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            84
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            58
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">4.25（AM）</td>
+          <td>
+            355.48
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            32.8
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            85
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            55
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">4.25（PM）</td>
+          <td>
+            372.45
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            25.58
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            85
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            57
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">4.26</td>
+          <td>
+            352.4
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            30.78
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            82
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            54
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">4.27（住院）</td>
+          <td>
+            297.7
+            <span style="color: red">↑</span>
+          </td>
+          <td>3.7</td>
+          <td>
+            70
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            49
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">4.28</td>
+          <td>
+            221.2
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            1.5
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            78
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            45
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">4.29</td>
+          <td>
+            214
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            1.4
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            75
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            15
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">4.30</td>
+          <td>
+            188.3
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.9
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            73
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            68
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.1</td>
+          <td>
+            158.1
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            1.4
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            72
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            54
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.2</td>
+          <td>
+            146.2
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.8
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            77
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            49
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.3</td>
+          <td>
+            128.42
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            11.02
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            78
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            41
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.4</td>
+          <td>
+            89.4
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.2
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            72
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            30
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.5（化疗）</td>
+          <td>
+            66.4
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.2
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            74
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            17
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.6</td>
+          <td>
+            46.5
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.5
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            74
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            11
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.7</td>
+          <td>
+            20.1
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.1
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            69
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            29
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.8</td>
+          <td>8.1</td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            66
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            17
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.9</td>
+          <td>3.8</td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            59
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            35
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.10</td>
+          <td>
+            2.2
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            58
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            26
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.11（化疗药结束）</td>
+          <td>
+            1.2
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            54
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            15
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.12</td>
+          <td>
+            1.3
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            50
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            26
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.13（开始发烧）</td>
+          <td>
+            1.1
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            51
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            20
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.14</td>
+          <td>
+            0.9
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            46
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            12
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            19.9
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.15</td>
+          <td>
+            0.6
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            42
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            5
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            37.7
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.16</td>
+          <td>
+            0.6
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            43
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            14
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            59.9
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.17</td>
+          <td>
+            0.7
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            39
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            9
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            54.9
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.18</td>
+          <td>
+            0.9
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            48
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            23
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            63.9
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.19</td>
+          <td>
+            1.1
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.4
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            43
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            11
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            93
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.20</td>
+          <td>
+            0.9
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            46
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            6
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            133.6
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.21</td>
+          <td>
+            0.6
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.1
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            45
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            8
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            148.3
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.22</td>
+          <td>
+            0.5
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            53
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            4
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            242.6
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.23</td>
+          <td>
+            0.6
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            47
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            6
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            196.6
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.24</td>
+          <td>
+            0.9
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            56
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            8
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            155.3
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.25</td>
+          <td>
+            0.9
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            64
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            15
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            101.5
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.26</td>
+          <td>
+            0.9
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.1
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            69
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            22
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            71.1
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">5.27（一疗最后一天）</td>
+          <td>
+            1.0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.1
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            68
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            37
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            49.1
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+
+        <!-- 在家观察 -->
+        <tr>
+          <td style="color: blue">5.29（在家观察）</td>
+          <td>
+            2.1
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.49
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            69
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            114
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.1（在家观察）</td>
+          <td>
+            5.17
+          </td>
+          <td>
+            2.56
+          </td>
+          <td>
+            73
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            276
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.5（在家观察）</td>
+          <td>
+            5.58
+          </td>
+          <td>
+            3.39
+          </td>
+          <td>
+            83
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            444
+            <span style="color: red">↑</span>
+          </td>
+          <td></td>
+        </tr>
+
+        <!-- 二疗开始 -->
+        <tr>
+          <td style="color: blue">6.8(二疗开始)</td>
+          <td>
+            5.35
+          </td>
+          <td>
+            3.08
+          </td>
+          <td>
+            97
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            471
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            < 0.5 </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.9</td>
+          <td>
+            31.2
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            28.5
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            92
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            473
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.7
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.10</td>
+          <td>
+            23.7
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            22.3
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            99
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            484
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.5
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.11</td>
+          <td>
+            30.9
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            30.2
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            90
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            398
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.4
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.12</td>
+          <td>
+            16.5
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            16.1
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            87
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            368
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            0.4
+          </td>
+        </tr>
+
+
+        <tr>
+          <td style="color: blue">6.17(在家测的)</td>
+          <td>
+            0.74
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.11
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            86
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            105
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <!-- 养疗开始 -->
+        <tr>
+          <td style="color: blue">6.18(养疗开始)</td>
+          <td>
+            0.6
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            73
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            57
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.8
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.19</td>
+          <td>
+            0.5
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            77
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            41
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.20</td>
+          <td>
+            0.4
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            70
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            18
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            4.8
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.21</td>
+          <td>
+            0.3
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            71
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            8
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            25.1
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.22</td>
+          <td>
+            0.5
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            64
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            4
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            53.2
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.23</td>
+          <td>
+            0.7
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            64
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            23
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            47.1
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="color: blue">6.24</td>
+          <td>
+            1.9
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            0.3
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            65
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            31
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            83.6
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <div>打了四针升白针</div>
+        <tr>
+          <td>6.25</td>
+          <td>
+            10.4
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            6.2
+          </td>
+          <td>
+            61
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            56
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            82.8
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td>6.26</td>
+          <td>
+            18.3
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            13.8
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            58
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            100
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            78.1
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <tr>
+          <td>6.27</td>
+          <td>
+            19.8
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            15.5
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            61
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            162
+          </td>
+          <td>
+            42.8
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+        <!-- 回家养疗 -->
+        <tr>
+          <td>7.1</td>
+          <td>
+            10.42
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            6.69
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            69.0
+            <span style="color: rgb(34, 255, 52)">↓</span>
+          </td>
+          <td>
+            455
+            <span style="color: red">↑</span>
+          </td>
+          <td>
+            6.48
+            <span style="color: red">↑</span>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    <div style="color: rgb(255, 34, 130); font-size: 18px; font-weight: bold;">加油！☺☺☺☺☺</div>
+  </div>
+</body>
+
 </html>
